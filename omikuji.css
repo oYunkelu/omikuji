@@ -1,0 +1,243 @@
+@charset "utf-8";
+
+/* 初期設定
+---------------------------------------------------- */
+body {       
+    background-color: aliceblue;
+    background-color: #FFFFFF;
+    background-image: url(images/shrine2.jpg);
+    background-repeat: no-repeat;
+    transition: all 1s;
+    /*padding:4em; */
+    background:#fcfcfc;
+    /*background-position: left,right;*/
+}
+
+.bodyfadeout {
+    opacity: 0;
+}
+
+
+/*文字が流れる*/
+.area {
+  width: 1000px;
+  /*border: 10px solid #ddd;*/
+  background-color: white;
+  overflow: hidden;
+  opacity: 0.8;
+}
+ 
+.marquee {
+  width: 1000px;
+  padding-left: 1000px;
+  white-space: nowrap;
+  font-size: 70px;
+  font-family: serif;
+  color: black;
+  
+  animation-name: marquee;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translate(0%);
+  }
+  100%,to {
+    transform: translate(-100%);
+  }
+}
+
+/*おみくじボタン*/
+#omikuji_btn {
+  max-width: 100%;
+  margin-top: 80px;
+  margin-left: 280px;
+  margin-bottom: 20px;
+  padding: 100px 100px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  font-family: serif;
+  background-color: darkgoldenrod;
+}
+/*#omikuji_btn::after {
+  pointer-events: none;
+}*/
+
+
+.display {
+  position: relative;
+}
+#img-wrap {
+  animation: img-wrap 2s cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes img-wrap {
+  0% {
+    clip-path: circle(0 at 50% 50%);
+    -webkit-clip-path: circle(0 at 50% 50%);
+  }
+  100% {
+    clip-path: circle(100% at 100% 100%);
+    -webkit-clip-path: circle(100% at 50% 50%);
+  }
+}
+
+.display p {
+  position: absolute;
+  font-size: 100px;
+  font-family: Quicksand, sans-serif;
+  font-weight: bold;/*太字*/
+  color: red;
+  top: 60%;
+  left: 50%;
+  -webkit-text-stroke: 5px #fff;  
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin: 0;
+  padding: 0;
+}
+.display img {
+  width: 100%;
+  margin-top: 100px;
+  
+}
+/*#view {
+  max-width: 100%;
+  margin-top: 10px;
+  margin-left: 190px;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 30px;
+  color: red;
+  /*background-color: white;*/
+/*}*/
+
+
+/*おみくじ画像回転拡大*/
+body #rotation {
+	margin-left: 320px;
+	margin-right: 200px;
+	-webkit-animation:rotation 3s infinite linear alternate;
+	animation:rotation 3s infinite linear alternate;
+}
+@-webkit-keyframes rotation {
+0% {-webkit-transform: scale(.4);}
+50% {-webkit-transform: scale(.8) rotate(90deg);}
+100% {-webkit-transform: scale(2 ) rotate(0deg);}
+}
+
+@keyframes rotation {
+  0% {
+    transform: scale(.4);
+  }
+  50% {
+    transform: scale(.8) rotate(90deg);
+    background: red;
+  }
+  100% {
+    transform: scale(2) rotate(0deg);
+    /*border-radius: 0;*/
+    background: blue;
+  }
+}
+ 
+
+
+/*カーテン*/
+  #wrap::before,#wrap::after{
+  position: fixed;
+  z-index: 1;
+  top: -15%;
+  display: block;
+  visibility: hidden;
+  width: 50%;
+  height: 130%;
+  content: '';
+  background-color: red/*#85c6bf*/;
+}
+#wrap::before{
+  left: 0;
+  animation : curtain_l 3s;
+　-webkit-animation : curtain_l 3s;
+}
+#wrap::after{
+  right: 0;
+  animation : curtain_r 3s;
+　-webkit-animation : curtain_r 3s;
+}
+
+@keyframes curtain_l{
+  0%{visibility: visible;}
+  20%{transform: rotate(0deg) translateX(0%); background-color: red/*#85c6bf*/;}
+  60%{transform: rotate(6deg) translateX(-50%);}
+  80%{opacity: 1;}
+  100%{transform: rotate(0deg) translateX(-100%); opacity:0; visibility: hidden;}
+}
+@-webkit-keyframes curtain_l{
+  0%{visibility: visible;}
+  20%{-webkit-transform: rotate(0deg) translateX(0%); background-color: red/*#85c6bf*/;}
+  60%{-webkit-transform: rotate(6deg) translateX(-50%);}
+  80%{opacity: 1;}
+  100%{-webkit-transform: rotate(0deg) translateX(-100%); opacity:0; visibility: hidden;}
+}
+@keyframes curtain_r{
+  0%{ visibility: visible;}
+  20%{transform: rotate(0deg) translateX(0%); background-color: red/*#85c6bf*/;}
+  60%{transform: rotate(-6deg) translateX(50%);}
+  80%{opacity: 1;}
+  100%{transform: rotate(0deg) translateX(100%); opacity:0; visibility: hidden;}
+}
+@-webkit-keyframes curtain_r{
+  0%{visibility: visible;}
+  20%{-webkit-transform: rotate(0deg) translateX(0%); background-color: red/*#85c6bf*/;}
+  60%{-webkit-transform: rotate(-6deg) translateX(50%);}
+  80%{opacity: 1;}
+  100%{-webkit-transform: rotate(0deg) translateX(100%); opacity:0; visibility: hidden;}
+}
+
+
+/*画面切り替えスライド*/
+/*.button3/*button*/ /*{
+    width: 40px;
+    height: 40px;
+    background-color: coral;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}*/
+ 
+.anime3 {
+    transition: all 1s ease-in;
+    margin-left: 110vw;
+}
+
+
+
+#img-wrap {
+  animation: img-wrap 2s cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes img-wrap {
+  0% {
+    clip-path: circle(0 at 50% 50%);
+    -webkit-clip-path: circle(0 at 50% 50%);
+  }
+  100% {
+    clip-path: circle(100% at 50% 50%);
+    -webkit-clip-path: circle(100% at 50% 50%);
+  }
+}
+
+
+ main{
+	display: block;
+}
+table, td, th { 
+	border: 1px solid gray;
+}

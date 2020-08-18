@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="omikuji.css">
+<title>おみくじ</title>
+<!--<style>#main{margin:5px;padding: 5px; background: #666;}p{margin:5px;padding: 5px; background: #fff;}</style>-->
+<style>
+body{
+  background-image: url(images/shrine2.jpg);
+  background-size: 1000px;
+  /*background-repeat: repeat-y;
+  background-position: left,right;*/
+}
+.display{
+    display: none;
+}
+
+</style>
+
+</head>
+<body>
+  <div class = "area">
+    <div class = "marquee">
+        おみくじ大会
+    </div>
+  </div>
+    <!-- 現在の要素 -->
+    <div id="main">
+      <!-- 子要素 -->
+      <p><button id="omikuji_btn">おみくじぼたん</button></p>
+      <div class="display" id="display">
+         <img id="img-wrap" src="images/shutyusen.jpg" alt="gazou" width="1000" height="600">
+     <!-- </div>
+      <div class="display2" id="display2">-->
+         <p id="view">[おみくじ結果表示]</p>
+      </div>
+    
+      <!--カーテン-->
+      <div id="wrap">
+      <!-- コンテンツなどサイトの中身 -->
+      </div>
+      
+      <!--<a class="button animsition-link" href="animsition-re-ja.html" data-animsition-out-class="fade-out">Fade</a>-->
+      
+      <!--画面切り替えスライド-->
+      <!--<button id="button3"></button>-->
+      </div>
+  
+      <!--<div class="img-wrap">
+          <img src = "images/shutyusen.jpg">
+      </div>-->
+
+</body>
+  
+<script> 
+'use strict';
+//window.onloadは、ページを全て読み込んでから処理します。
+window.onload = function (){
+  /**
+  * Event:onDblClick,onclick,onchange,onload,onSelect,onMouseUp...
+  */
+
+  //配列でおみくじの内容を定義  
+  let list1 = ['大吉', '中吉', '小吉', '吉', '凶',"<img src='../cats/cat01.png'>"];
+  console.log("[list1]-------------");
+  //console.log(list1[0]);
+  
+  //console.dir(document.children[0]);
+
+ 
+  let mybtn1= document.querySelector("#omikuji_btn");
+  mybtn1.onclick = function(event){
+  //alert('onClickイベントへ！');
+  //let img = document.getElementById('display'); 
+  //img.style.display = "block";
+  /*let img2 = document.getElementById('display2'); 
+  img.style.display2 = "block";*/
+  let num = Math.floor(Math.random()*5);
+  console.log(num);
+  console.log(list1[num]);
+  document.querySelector("#view").innerHTML=list1[num];
+  let img = document.getElementById('display'); 
+  img.style.display = "block";
+  };
+  
+  /*document.querySelector('#img-wrap').innerHTML('<img src="ima*g*es/omikujiuranai'+ num +'.gif">');
+  };*/
+  
+  //ボタンがクリックされたら、ランダム値（乱数）を発生させ、結果をHTMLに埋め込む
+};
+  
+
+  /*var body = document.getElementsByTagName('body')[0];
+  function linkUrl() {
+    location.href = 'ここに遷移先のアドレス'
+}
+var bt5 = document.getElementById('button5');
+var cover = document.getElementById('cover');
+bt5.addEventListener('click', function() {
+    cover.classList.add('anime5');
+    setTimeout(fadeOut, 1500);
+    setTimeout(linkUrl, 2500);
+});*/
+ 
+  /*$('.btn_nav').click(function() {
+  // animate content
+  $('.page__style').addClass('animate_content');
+  $('.page__description').fadeOut(100).delay(2800).fadeIn();
+
+  setTimeout(function() {
+    $('.page__style').removeClass('animate_content');
+  }, 3200);
+
+  //remove fadeIn class after 1500ms
+  setTimeout(function() {
+    $('.page__style').removeClass('fadeIn');
+  }, 1500);
+
+});*/
+
+// on click show page after 1500ms
+
+</script>
+  
+  
+
+</html>
